@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<body>
+
+<div style="margin-bottom: 30px; max-width: 650px; margin-left: auto; margin-right: auto;">
+  <h1 style="color: #7f5af0; font-weight: 700; font-size: 2.4rem; margin-bottom: 10px; text-align: center;">
+    Herramientas para Apoyo en Tesis y Proyectos de Investigación
+  </h1>
+</div>
+<p style="color: #bbb; font-size: 1rem; line-height: 1.5; text-align: justify; margin-bottom: 30px;">
+  Esta página reúne varias herramientas útiles para investigadores y estudiantes que trabajan en sus tesis o proyectos académicos.Usa los botones de la parte superior para navegar entre las secciones.Cada sección incluye instrucciones detalladas para facilitar su uso.
+</p>
+
+
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Herramienta Integral para Tesis</title>
+<style>
+  
+  /* Estilos generales para todo el proyecto */
+  body  {
+    background: #000000;
+    color: #ddd;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+  }
+  nav {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+  }
+  nav button {
+    background: #333;
+    color: #ddd;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+  }
+  nav button:hover {
+    background: #5a3ed2;
+  }
+  nav button.active {
+    background: #7f5af0;
+    color: white;
+  }
+  section {
+    display: none;
+  }
+  section.active {
+    display: block;
+  }
+
+  /* ======== Aquí estilos específicos de cada sección ======== */
+
+  /* --- Tamaño de muestra --- */
+  #muestra .container {
+    background: #121212;
+    max-width: 500px;
+    width: 100%;
+    border-radius: 12px;
+    padding: 30px 40px 40px;
+    box-shadow: 0 12px 30px rgb(0 0 0 / 0.9);
+    margin: auto;
+  }
+  #muestra h1 {
+    text-align: center;
+    color: #7f5af0;
+    margin-bottom: 25px;
+    font-weight: 700;
+    font-size: 1.8rem;
+  }
+  #muestra form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    margin-top: 18px;
+    color: #bb86fc;
+  }
+  #muestra input[type="number"], #muestra select {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: 2px solid #444;
+    border-radius: 8px;
+    background: #222;
+    color: #eee;
+    transition: border-color 0.25s ease;
+  }
+  #muestra input[type="number"]::placeholder {
+    color: #888;
+  }
+  #muestra input[type="number"]:focus, #muestra select:focus {
+    border-color: #7f5af0;
+    outline: none;
+    box-shadow: 0 0 8px #7f5af0aa;
+  }
+  #muestra .helper-text {
+    font-size: 0.85rem;
+    color: #999;
+    margin-top: 4px;
+  }
+  #muestra button {
+    margin-top: 30px;
+    background: #7f5af0;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border: none;
+    padding: 14px;
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 5px 12px #7f5af055;
+    transition: background 0.3s ease;
+  }
+  #muestra button:hover {
+    background: #5a3ed2;
+  }
+  #muestra .result {
+    margin-top: 30px;
+    background: #1e1e1e;
+    padding: 25px 30px;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgb(127 90 240 / 0.4);
+    color: #ccc;
+  }
+  #muestra .result h2, #muestra .result h3 {
+    color: #bb86fc;
+    margin-top: 0;
+  }
+  #muestra .formula {
+    font-family: 'Courier New', Courier, monospace;
+    background: #2a2a2a;
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin: 15px 0 20px;
+    font-size: 1.2rem;
+    text-align: center;
+    color: #d0bfff;
+    user-select: all;
+  }
+  #muestra .suggestion {
+    background: #293b2e;
+    color: #a3d9a5;
+    padding: 16px 20px;
+    border-radius: 12px;
+    font-style: italic;
+    line-height: 1.4;
+    box-shadow: inset 0 0 12px #58b04f44;
+  }
+  @media (max-width: 520px) {
+    #muestra .container {
+      padding: 25px 20px 30px;
+    }
+  }
+
+  /* --- Citas APA --- */
+  #citas {
+    max-width: 900px;
+    margin: auto;
+  }
+  #citas body, #citas {
+    font-family: Arial, sans-serif;
+    background-color: #111;
+    color: #fff;
+    padding: 0;
+    margin: 0;
+  }
+  #citas label, #citas select, #citas input {
+    display: block;
+    margin: 10px 0;
+  }
+  #citas input[type="text"] {
+    padding: 5px;
+    width: 100%;
+    max-width: 800px;
+  }
+  #citas select, #citas button {
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 5px;
+  }
+  #citas button {
+    background-color: #28a745;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-top: 15px;
+  }
+  #citas .form-section {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+  }
+  #citas .citation {
+    margin: 10px 0;
+  }
+  #citas .italic {
+    font-style: italic;
+  }
+  #citas .output {
+    background: #222;
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 800px;
+    margin-top: 20px;
+  }
+
+  /* --- Diagrama Gantt --- */
+  #gantt {
+    max-width: 750px;
+    margin: auto;
+    font-family: Arial, sans-serif;
+    color: #222;
+  }
+  #gantt body, #gantt {
+    margin: 0;
+    padding: 0;
+  }
+  #gantt input, #gantt button {
+    margin: 5px;
+    padding: 6px;
+  }
+  #gantt table {
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 700px;
+  }
+  #gantt table, #gantt th, #gantt td {
+    border: 1px solid #ccc;
+  }
+  #gantt th, #gantt td {
+    padding: 8px;
+    text-align: left;
+  }
+  #gantt #gantt_chart {
+    margin-top: 40px;
+    background: white;
+    padding: 10px;
+    border: 1px solid #ccc;
+    overflow: visible !important; /* Importante para quitar scroll */
+  }
+  #gantt #btnDescargar {
+    display: none;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #2e86de;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+  }
+  #gantt #btnDescargar:hover {
+    background-color: #1b4f72;
+  }
+  #gantt #mensaje {
+    color: red;
+    margin-top: 10px;
+  }
+
+  /* --- Planteamiento del Problema --- */
+  #problema {
+    max-width: 700px;
+    margin: auto;
+    font-family: Arial, sans-serif;
+  }
+  #problema label {
+    display: block;
+    margin: 1rem 0 0.3rem;
+    font-weight: 600;
+    color: #ddd;
+  }
+  #problema textarea {
+    width: 100%;
+    height: 70px;
+    background: #1e1e1e;
+    color: #eee;
+    border: 1px solid #4b3b6f;
+    border-radius: 4px;
+    padding: 0.5rem;
+    resize: vertical;
+    font-size: 1rem;
+  }
+  #problema .helper-text {
+    font-size: 0.85rem;
+    color: #aaa;
+    margin-top: 2px;
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+  #problema button {
+    margin-top: 1.5rem;
+    background: #7b54c7;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  #problema button:hover {
+    background: #9c73e8;
+  }
+  #problema #resultado {
+    margin-top: 2rem;
+    background: #222;
+    border-radius: 6px;
+    padding: 1rem;
+    white-space: pre-wrap;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #ddd;
+  }
+</style>
+
+<!-- Carga scripts externos para Gantt -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dom-to-image@2.6.0/src/dom-to-image.min.js"></script>
+
+</head>
+<body>
+
+<nav>
+  <button class="tab-button active" data-tab="muestra" aria-controls="muestra" aria-selected="true">Tamaño de Muestra</button>
+  <button class="tab-button" data-tab="citas" aria-controls="citas" aria-selected="false">Generador de Citas APA</button>
+  <button class="tab-button" data-tab="gantt" aria-controls="gantt" aria-selected="false">Diagrama de Gantt</button>
+  <button class="tab-button" data-tab="problema" aria-controls="problema" aria-selected="false">Planteamiento del Problema</button>
+</nav>
+
+<!-- SECCIÓN 1: Tamaño de muestra -->
+<section id="muestra" class="active" role="tabpanel" tabindex="0">
+  <div class="container">
+    <h1>Calculadora de Tamaño de Muestra</h1>
+
+    <form id="sampleForm" autocomplete="off" novalidate>
+      <label for="confidence">Nivel de Confianza (%):</label>
+      <select id="confidence" required aria-describedby="confidenceHelp">
+        <option value="1.645">90%</option>
+        <option value="1.96" selected>95%</option>
+        <option value="2.576">99%</option>
+      </select>
+      <div id="confidenceHelp" class="helper-text">El nivel de confianza define la certeza del resultado.</div>
+
+      <label for="proportion">Proporción estimada (p):</label>
+      <input type="number" id="proportion" min="0" max="1" step="0.01" placeholder="Ejemplo: 0.5 (si no sabes, usa 0.5)" required aria-describedby="propHelp" />
+      <div id="propHelp" class="helper-text">Valor entre 0 y 1. Si no conoces, usa 0.5 para máxima variabilidad.</div>
+
+      <label for="error">Margen de error tolerado (e):</label>
+      <input type="number" id="error" min="0.001" max="1" step="0.001" placeholder="Ejemplo: 0.05 para 5%" required aria-describedby="errorHelp" />
+      <div id="errorHelp" class="helper-text">Cuánto error puedes tolerar en la estimación (decimal).</div>
+
+      <label for="population">Tamaño de la población (N):</label>
+      <input type="number" id="population" min="1" placeholder="Opcional, si población es finita" aria-describedby="popHelp" />
+      <div id="popHelp" class="helper-text">Si es desconocido o población infinita, deja vacío.</div>
+
+      <button type="submit" aria-label="Calcular tamaño de muestra">Calcular Tamaño de Muestra</button>
+    </form>
+
+    <div id="output" class="result" style="display:none;" role="region" aria-live="polite" aria-atomic="true"></div>
+  </div>
+</section>
+
+<!-- SECCIÓN 2: Generador de citas APA -->
+<section id="citas" role="tabpanel" tabindex="0">
+  <h2>Generador de Citas APA</h2>
+
+  <div class="form-section">
+    <label for="resourceType">Tipo de recurso:</label>
+    <select id="resourceType" onchange="renderFormFields()">
+      <option value="libro">Libro</option>
+      <option value="web">Sitio web</option>
+      <option value="revista">Artículo de revista</option>
+      <option value="tesis">Tesis</option>
+      <option value="youtube">Video de YouTube</option>
+      <option value="podcast">Podcast</option>
+      <option value="blog">Entrada de blog</option>
+    </select>
+    <form id="citationForm"></form>
+    <button onclick="generarCita()">Agregar cita</button>
+  </div>
+
+  <h3>Citas generadas (ordenadas alfabéticamente):</h3>
+  <div id="citationsOutput" class="output" tabindex="0" aria-live="polite"></div>
+
+  <script>
+    const citationForm = document.getElementById('citationForm');
+    const citationsOutput = document.getElementById('citationsOutput');
+    let citations = [];
+
+    function renderFormFields() {
+      const type = document.getElementById('resourceType').value;
+      let html = '';
+
+      if(type === 'libro'){
+        html = `
+          <label for="author">Autor(es) (Apellido, Iniciales):</label>
+          <input type="text" id="author" required placeholder="Ej: Pérez, J. M." />
+          <label for="year">Año de publicación:</label>
+          <input type="text" id="year" required placeholder="Ej: 2020" />
+          <label for="title">Título del libro:</label>
+          <input type="text" id="title" required placeholder="Ej: Introducción a la estadística" />
+          <label for="edition">Edición (si no hay, dejar en blanco):</label>
+          <input type="text" id="edition" placeholder="Ej: 2ª edición" />
+          <label for="publisher">Editorial:</label>
+          <input type="text" id="publisher" required placeholder="Ej: Editorial ABC" />
+          <label for="city">Ciudad:</label>
+          <input type="text" id="city" placeholder="Ej: Ciudad de México" />
+          <label for="pages">Número de páginas:</label>
+          <input type="text" id="pages" placeholder="Ej: 300 pp." />
+        `;
+      } else if(type === 'web'){
+        html = `
+          <label for="author">Autor o entidad responsable:</label>
+          <input type="text" id="author" required placeholder="Ej: Organización Mundial de la Salud" />
+          <label for="year">Año (o fecha completa):</label>
+          <input type="text" id="year" required placeholder="Ej: 2023" />
+          <label for="title">Título de la página o artículo:</label>
+          <input type="text" id="title" required placeholder="Ej: Datos sobre la pandemia" />
+          <label for="url">URL:</label>
+          <input type="text" id="url" required placeholder="Ej: https://www.who.int" />
+          <label for="accessDate">Fecha de consulta:</label>
+          <input type="text" id="accessDate" placeholder="Ej: 15 de junio de 2025" />
+        `;
+      } else if(type === 'revista'){
+        html = `
+          <label for="author">Autor(es) (Apellido, Iniciales):</label>
+          <input type="text" id="author" required placeholder="Ej: López, A." />
+          <label for="year">Año de publicación:</label>
+          <input type="text" id="year" required placeholder="Ej: 2022" />
+          <label for="articleTitle">Título del artículo:</label>
+          <input type="text" id="articleTitle" required placeholder="Ej: Análisis del cambio climático" />
+          <label for="journalName">Nombre de la revista:</label>
+          <input type="text" id="journalName" required placeholder="Ej: Revista Ambiental" />
+          <label for="volume">Volumen:</label>
+          <input type="text" id="volume" placeholder="Ej: 15" />
+          <label for="issue">Número (o fascículo):</label>
+          <input type="text" id="issue" placeholder="Ej: 3" />
+          <label for="pages">Páginas:</label>
+          <input type="text" id="pages" placeholder="Ej: 12-25" />
+          <label for="doi">DOI (si tiene):</label>
+          <input type="text" id="doi" placeholder="Ej: 10.1234/ra.v15i3.456" />
+        `;
+      } else if(type === 'tesis'){
+        html = `
+          <label for="author">Autor (Apellido, Iniciales):</label>
+          <input type="text" id="author" required placeholder="Ej: Martínez, P. R." />
+          <label for="year">Año de defensa o publicación:</label>
+          <input type="text" id="year" required placeholder="Ej: 2019" />
+          <label for="title">Título de la tesis:</label>
+          <input type="text" id="title" required placeholder="Ej: Impacto de la tecnología en educación" />
+          <label for="institution">Institución:</label>
+          <input type="text" id="institution" required placeholder="Ej: Universidad Nacional Autónoma de México" />
+          <label for="location">Ciudad o lugar:</label>
+          <input type="text" id="location" placeholder="Ej: Ciudad de México" />
+          <label for="typeTesis">Tipo de tesis:</label>
+          <input type="text" id="typeTesis" placeholder="Ej: Tesis de licenciatura, maestría o doctorado" />
+        `;
+      } else if(type === 'youtube'){
+        html = `
+          <label for="author">Nombre del canal o autor:</label>
+          <input type="text" id="author" required placeholder="Ej: Canal Educativo" />
+          <label for="year">Año de publicación:</label>
+          <input type="text" id="year" required placeholder="Ej: 2021" />
+          <label for="title">Título del video:</label>
+          <input type="text" id="title" required placeholder="Ej: Introducción a la programación" />
+          <label for="url">URL del video:</label>
+          <input type="text" id="url" required placeholder="Ej: https://youtube.com/..." />
+          <label for="accessDate">Fecha de consulta:</label>
+          <input type="text" id="accessDate" placeholder="Ej: 10 de junio de 2025" />
+        `;
+      } else if(type === 'podcast'){
+        html = `
+          <label for="author">Nombre del podcast o autor:</label>
+          <input type="text" id="author" required placeholder="Ej: Podcast Científico" />
+          <label for="year">Año de publicación:</label>
+          <input type="text" id="year" required placeholder="Ej: 2022" />
+          <label for="title">Título del episodio:</label>
+          <input type="text" id="title" required placeholder="Ej: La evolución del internet" />
+          <label for="url">URL:</label>
+          <input type="text" id="url" required placeholder="Ej: https://podcast.com/..." />
+          <label for="accessDate">Fecha de consulta:</label>
+          <input type="text" id="accessDate" placeholder="Ej: 15 de junio de 2025" />
+        `;
+      } else if(type === 'blog'){
+        html = `
+          <label for="author">Autor del blog:</label>
+          <input type="text" id="author" required placeholder="Ej: Juan Pérez" />
+          <label for="year">Año de publicación:</label>
+          <input type="text" id="year" required placeholder="Ej: 2023" />
+          <label for="title">Título de la entrada:</label>
+          <input type="text" id="title" required placeholder="Ej: Tips para estudiar mejor" />
+          <label for="url">URL:</label>
+          <input type="text" id="url" required placeholder="Ej: https://blog.com/entrada" />
+          <label for="accessDate">Fecha de consulta:</label>
+          <input type="text" id="accessDate" placeholder="Ej: 12 de junio de 2025" />
+        `;
+      }
+
+      citationForm.innerHTML = html;
+    }
+
+    function generarCita(){
+      const type = document.getElementById('resourceType').value;
+      let citation = '';
+
+      // Recoger datos según tipo
+      function getValue(id){ return document.getElementById(id)?.value.trim() || ''; }
+
+      if(type === 'libro'){
+        const author = getValue('author');
+        const year = getValue('year');
+        const title = getValue('title');
+        const edition = getValue('edition');
+        const publisher = getValue('publisher');
+        const city = getValue('city');
+        // Páginas no usado en cita estándar libro
+        if(!author || !year || !title || !publisher){
+          alert('Completa los campos obligatorios.');
+          return;
+        }
+        citation = `${author} (${year}). *${title}*${edition ? ', ' + edition : ''}. ${city ? city + ': ' : ''}${publisher}.`;
+      } else if(type === 'web'){
+        const author = getValue('author');
+        const year = getValue('year');
+        const title = getValue('title');
+        const url = getValue('url');
+        const accessDate = getValue('accessDate');
+        if(!author || !year || !title || !url){
+          alert('Completa los campos obligatorios.');
+          return;
+        }
+        citation = `${author} (${year}). *${title}*. Recuperado de ${url}${accessDate ? ' (consultado el ' + accessDate + ')' : ''}.`;
+      } else if(type === 'revista'){
+        const author = getValue('author');
+        const year = getValue('year');
+        const articleTitle = getValue('articleTitle');
+        const journalName = getValue('journalName');
+        const volume = getValue('volume');
+        const issue = getValue('issue');
+        const pages = getValue('pages');
+        const doi = getValue('doi');
+        if(!author || !year || !articleTitle || !journalName){
+          alert('Completa los campos obligatorios.');
+          return;
+        }
+        citation = `${author} (${year}). ${articleTitle}. *${journalName}*, ${volume ? volume : ''}${issue ? `(${issue})` : ''}${pages ? `, ${pages}` : ''}.${doi ? ' https://doi.org/' + doi : ''}`;
+      } else if(type === 'tesis'){
+        const author = getValue('author');
+        const year = getValue('year');
+        const title = getValue('title');
+        const institution = getValue('institution');
+        const location = getValue('location');
+        const typeTesis = getValue('typeTesis');
+        if(!author || !year || !title || !institution){
+          alert('Completa los campos obligatorios.');
+          return;
+        }
+        citation = `${author} (${year}). *${title}*${typeTesis ? ' [' + typeTesis + ']' : ''}. ${institution}${location ? ', ' + location : ''}.`;
+      } else if(type === 'youtube'){
+        const author = getValue('author');
+        const year = getValue('year');
+        const title = getValue('title');
+        const url = getValue('url');
+        const accessDate = getValue('accessDate');
+        if(!author || !year || !title || !url){
+          alert('Completa los campos obligatorios.');
+          return;
+        }
+        citation = `${author} (${year}). *${title}* [Video]. YouTube. ${url}${accessDate ? ' (consultado el ' + accessDate + ')' : ''}.`;
+      } else if(type === 'podcast'){
+        const author = getValue('author');
+        const year = getValue('year');
+        const title = getValue('title');
+        const url = getValue('url');
+        const accessDate = getValue('accessDate');
+        if(!author || !year || !title || !url){
+          alert('Completa los campos obligatorios.');
+          return;
+        }
+        citation = `${author} (${year}). *${title}* [Podcast]. ${url}${accessDate ? ' (consultado el ' + accessDate + ')' : ''}.`;
+      } else if(type === 'blog'){
+        const author = getValue('author');
+        const year = getValue('year');
+        const title = getValue('title');
+        const url = getValue('url');
+        const accessDate = getValue('accessDate');
+        if(!author || !year || !title || !url){
+          alert('Completa los campos obligatorios.');
+          return;
+        }
+        citation = `${author} (${year}). *${title}*. Recuperado de ${url}${accessDate ? ' (consultado el ' + accessDate + ')' : ''}.`;
+      }
+
+      if(citation) {
+        citations.push(citation);
+        citations.sort((a,b) => a.localeCompare(b));
+        renderCitations();
+        citationForm.reset();
+      }
+    }
+
+    function renderCitations(){
+      citationsOutput.innerHTML = '';
+      citations.forEach(c => {
+        const div = document.createElement('div');
+        div.classList.add('citation');
+        div.textContent = c;
+        citationsOutput.appendChild(div);
+      });
+    }
+
+    window.onload = () => {
+      renderFormFields();
+    }
+  </script>
+</section>
+
+<!-- SECCIÓN 3: Diagrama de Gantt -->
+<section id="gantt" role="tabpanel" tabindex="0">
+  <h2>Generador de Diagrama de Gantt</h2>
+
+  <div>
+    <table id="tasksTable" aria-label="Tabla de tareas para diagrama de Gantt" style="width:100%; max-width:700px; border-collapse: collapse; margin-bottom: 10px;">
+      <thead>
+        <tr>
+          <th style="border: 1px solid #ccc; padding: 8px;">Tarea</th>
+          <th style="border: 1px solid #ccc; padding: 8px;">Fecha inicio (YYYY-MM-DD)</th>
+          <th style="border: 1px solid #ccc; padding: 8px;">Fecha fin (YYYY-MM-DD)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="border: 1px solid #ccc; padding: 8px;"><input type="text" aria-label="Nombre de tarea 1" placeholder="Ej: Investigación" style="width: 100%;"></td>
+          <td style="border: 1px solid #ccc; padding: 8px;"><input type="date" aria-label="Fecha inicio tarea 1" style="width: 100%;"></td>
+          <td style="border: 1px solid #ccc; padding: 8px;"><input type="date" aria-label="Fecha fin tarea 1" style="width: 100%;"></td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ccc; padding: 8px;"><input type="text" aria-label="Nombre de tarea 2" placeholder="Ej: Desarrollo" style="width: 100%;"></td>
+          <td style="border: 1px solid #ccc; padding: 8px;"><input type="date" aria-label="Fecha inicio tarea 2" style="width: 100%;"></td>
+          <td style="border: 1px solid #ccc; padding: 8px;"><input type="date" aria-label="Fecha fin tarea 2" style="width: 100%;"></td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ccc; padding: 8px;"><input type="text" aria-label="Nombre de tarea 3" placeholder="Ej: Presentación" style="width: 100%;"></td>
+          <td style="border: 1px solid #ccc; padding: 8px;"><input type="date" aria-label="Fecha inicio tarea 3" style="width: 100%;"></td>
+          <td style="border: 1px solid #ccc; padding: 8px;"><input type="date" aria-label="Fecha fin tarea 3" style="width: 100%;"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button id="btnAddTask" aria-label="Agregar nueva tarea" style="margin-right:10px;">Agregar tarea</button>
+    <button id="btnGenerate" aria-label="Generar diagrama de Gantt">Generar Diagrama</button>
+    <button id="btnDownload" aria-label="Descargar diagrama de Gantt como imagen" style="display:none; margin-left:10px;">Descargar Imagen</button>
+
+    <div id="gantt_chart" style="margin-top: 30px;"></div>
+    <div id="mensaje" style="color: red; margin-top: 10px;"></div>
+  </div>
+
+  <script>
+    google.charts.load('current', {'packages':['gantt']});
+    let chart;
+    let dataTable;
+
+    function parseDate(str) {
+      const d = new Date(str);
+      return isNaN(d) ? null : d;
+    }
+
+    function prepareData() {
+      const table = document.getElementById('tasksTable');
+      const rows = table.tBodies[0].rows;
+      const data = new google.visualization.DataTable();
+
+      data.addColumn('string', 'ID');
+      data.addColumn('string', 'Tarea');
+      data.addColumn('string', 'Recurso');
+      data.addColumn('date', 'Inicio');
+      data.addColumn('date', 'Fin');
+      data.addColumn('number', 'Duración');
+      data.addColumn('number', 'Porcentaje completado');
+      data.addColumn('string', 'Dependencias');
+
+      let tasks = [];
+      for(let i=0; i<rows.length; i++) {
+        const taskName = rows[i].cells[0].querySelector('input').value.trim();
+        const startDate = rows[i].cells[1].querySelector('input').value;
+        const endDate = rows[i].cells[2].querySelector('input').value;
+
+        if(taskName && startDate && endDate) {
+          const start = parseDate(startDate);
+          const end = parseDate(endDate);
+          if(start && end && end >= start) {
+            tasks.push({
+              id: 'Task' + i,
+              name: taskName,
+              resource: null,
+              start: start,
+              end: end,
+              duration: null,
+              percentComplete: 0,
+              dependencies: null
+            });
+          }
+        }
+      }
+
+      if(tasks.length === 0) return null;
+
+      tasks.forEach(t => {
+        data.addRow([t.id, t.name, t.resource, t.start, t.end, t.duration, t.percentComplete, t.dependencies]);
+      });
+
+      return data;
+    }
+
+    function drawChart() {
+      dataTable = prepareData();
+      if(!dataTable){
+        document.getElementById('mensaje').textContent = 'Por favor, ingresa al menos una tarea completa con fecha inicio y fin válidas.';
+        document.getElementById('gantt_chart').innerHTML = '';
+        document.getElementById('btnDownload').style.display = 'none';
+        return;
+      }
+      document.getElementById('mensaje').textContent = '';
+
+      const options = {
+        height: dataTable.getNumberOfRows() * 40 + 50,
+        gantt: {
+          criticalPathEnabled: false,
+          arrow: {
+            angle: 100,
+            width: 2,
+            color: '#7f5af0',
+            radius: 0
+          },
+          labelStyle: {
+            fontName: 'Segoe UI',
+            fontSize: 12,
+            color: '#333'
+          },
+          trackHeight: 30,
+          barHeight: 20,
+          palette: [
+            { "color": "#7f5af0", "dark": "#4e33a8", "light": "#bb9fff" }
+          ]
+        }
+      };
+
+      chart = new google.visualization.Gantt(document.getElementById('gantt_chart'));
+      chart.draw(dataTable, options);
+      document.getElementById('btnDownload').style.display = 'inline-block';
+    }
+
+    document.getElementById('btnGenerate').addEventListener('click', () => {
+      drawChart();
+    });
+
+    document.getElementById('btnDownload').addEventListener('click', () => {
+      const node = document.getElementById('gantt_chart');
+      domtoimage.toPng(node)
+        .then(function (dataUrl) {
+          const link = document.createElement('a');
+          link.download = 'diagrama_gantt.png';
+          link.href = dataUrl;
+          link.click();
+        })
+        .catch(function (error) {
+          alert('Error al generar la imagen: ' + error);
+        });
+    });
+
+    document.getElementById('btnAddTask').addEventListener('click', () => {
+      const tableBody = document.getElementById('tasksTable').tBodies[0];
+      const currentRows = tableBody.rows.length;
+      if(currentRows >= 15) {
+        alert('No se pueden agregar más de 15 tareas.');
+        return;
+      }
+      const newRow = document.createElement('tr');
+
+      newRow.innerHTML = `
+        <td style="border: 1px solid #ccc; padding: 8px;"><input type="text" aria-label="Nombre de tarea ${currentRows + 1}" placeholder="Ej: Nueva tarea" style="width: 100%;"></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><input type="date" aria-label="Fecha inicio tarea ${currentRows + 1}" style="width: 100%;"></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><input type="date" aria-label="Fecha fin tarea ${currentRows + 1}" style="width: 100%;"></td>
+      `;
+
+      tableBody.appendChild(newRow);
+    });
+  </script>
+</section>
+
+
+<!-- SECCIÓN 4: Generador de Planteamiento del Problema -->
+<section id="problema" role="tabpanel" tabindex="0">
+  <h2>Generador de Planteamiento del Problema</h2>
+
+  <form id="problemForm" autocomplete="off" novalidate>
+    <label for="contexto">Contexto o situación general:</label>
+    <textarea id="contexto" placeholder="Describe el contexto general donde se encuentra el problema. Ejemplo: 'En el ámbito educativo, se ha detectado...'" required></textarea>
+    <div class="helper-text">Explica claramente el entorno y las circunstancias actuales relacionadas con el problema.</div>
+
+    <label for="problemaCentral">¿Cuál es el problema principal?:</label>
+    <textarea id="problemaCentral" placeholder="Formula claramente el problema que quieres abordar. Ejemplo: 'Bajo rendimiento académico en estudiantes de secundaria.'" required></textarea>
+    <div class="helper-text">Define el problema de forma precisa y concreta.</div>
+
+    <label for="importancia">¿Por qué es importante resolverlo?:</label>
+    <textarea id="importancia" placeholder="Explica la relevancia o impacto que tiene este problema. Ejemplo: 'Porque afecta la formación y futuro de los jóvenes...'" required></textarea>
+    <div class="helper-text">Argumenta la importancia social, económica o científica.</div>
+
+    <label for="causas">¿Cuáles son las posibles causas?:</label>
+    <textarea id="causas" placeholder="Lista o explica las causas que generan el problema. Ejemplo: 'Falta de recursos, poca motivación...'" required></textarea>
+    <div class="helper-text">Identifica factores que originan o contribuyen al problema.</div>
+
+    <label for="consecuencias">¿Cuáles son las consecuencias si no se resuelve?:</label>
+    <textarea id="consecuencias" placeholder="Describe qué pasaría si el problema persiste. Ejemplo: 'Aumento de la deserción escolar...'" required></textarea>
+    <div class="helper-text">Expone el impacto negativo si no se atiende el problema.</div>
+
+    <label for="preguntasGuia">Preguntas que guían la investigación:</label>
+    <textarea id="preguntasGuia" placeholder="Ejemplo: '¿Cómo mejorar el rendimiento académico? ¿Qué estrategias son efectivas...?'" required></textarea>
+    <div class="helper-text">Incluye preguntas claras que dirijan el estudio.</div>
+
+    <button type="submit" aria-label="Generar planteamiento del problema">Generar Planteamiento</button>
+  </form>
+
+  <div id="resultado" aria-live="polite" aria-atomic="true"></div>
+
+  <script>
+    document.getElementById('problemForm').addEventListener('submit', function(e){
+      e.preventDefault();
+
+      const contexto = document.getElementById('contexto').value.trim();
+      const problemaCentral = document.getElementById('problemaCentral').value.trim();
+      const importancia = document.getElementById('importancia').value.trim();
+      const causas = document.getElementById('causas').value.trim();
+      const consecuencias = document.getElementById('consecuencias').value.trim();
+      const preguntasGuia = document.getElementById('preguntasGuia').value.trim();
+
+      if(!contexto || !problemaCentral || !importancia || !causas || !consecuencias || !preguntasGuia){
+        alert('Por favor, completa todos los campos para generar el planteamiento.');
+        return;
+      }
+
+      const texto = 
+`Planteamiento del Problema:
+
+${contexto}
+
+El problema principal que se aborda en esta investigación es: ${problemaCentral}
+
+Es importante resolver este problema debido a que ${importancia}
+
+Las posibles causas que originan este problema incluyen: ${causas}
+
+Si no se resuelve, las consecuencias podrían ser: ${consecuencias}
+
+Para guiar esta investigación, se plantean las siguientes preguntas: ${preguntasGuia}
+
+Este planteamiento permitirá enmarcar y focalizar el estudio hacia soluciones efectivas y pertinentes.`;
+
+      const resultadoDiv = document.getElementById('resultado');
+      resultadoDiv.textContent = texto;
+    });
+  </script>
+</section>
+
+<script>
+  // Navegación entre pestañas
+  const tabs = document.querySelectorAll('nav button.tab-button');
+  const sections = document.querySelectorAll('section[role="tabpanel"]');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+
+      const target = tab.getAttribute('data-tab');
+      sections.forEach(sec => {
+        if(sec.id === target){
+          sec.classList.add('active');
+          sec.setAttribute('tabindex','0');
+        } else {
+          sec.classList.remove('active');
+          sec.setAttribute('tabindex','-1');
+        }
+      });
+    });
+  });
+</script>
+
+<script>
+  // Código para la calculadora de tamaño de muestra con fórmula e texto generado
+  const formSample = document.getElementById('sampleForm');
+  const outputDiv = document.getElementById('output');
+
+  formSample.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const z = parseFloat(document.getElementById('confidence').value);
+    let p = parseFloat(document.getElementById('proportion').value);
+    const eMargin = parseFloat(document.getElementById('error').value);
+    let N = parseInt(document.getElementById('population').value);
+
+    if(isNaN(z) || isNaN(p) || isNaN(eMargin)) {
+      alert('Por favor, ingresa valores válidos en todos los campos obligatorios.');
+      return;
+    }
+
+    if(p < 0 || p > 1) {
+      alert('La proporción debe estar entre 0 y 1.');
+      return;
+    }
+    if(eMargin <= 0 || eMargin > 1) {
+      alert('El margen de error debe ser mayor que 0 y menor o igual que 1.');
+      return;
+    }
+    if(N && (N <= 0 || isNaN(N))) {
+      alert('La población debe ser un número positivo o dejarse vacía.');
+      return;
+    }
+
+    // Fórmula para población infinita
+    const numerator = Math.pow(z,2)*p*(1-p);
+    const denominator = Math.pow(eMargin,2);
+    let n0 = numerator/denominator;
+
+    // Si población finita
+    let n = n0;
+    let formulaText = '';
+    if(N && N > 0){
+      n = (n0*N)/(n0 + N - 1);
+      formulaText = `n = ( (Z² * p * (1-p)) / e² ) / (1 + (( (Z² * p * (1-p)) / e² ) - 1) / N )`;
+    } else {
+      formulaText = `n = (Z² * p * (1-p)) / e²`;
+    }
+
+    n = Math.ceil(n);
+
+    // Mostrar resultado
+    outputDiv.style.display = 'block';
+    outputDiv.innerHTML = `
+      <h2>Tamaño de muestra requerido:</h2>
+      <p><strong>${n}</strong> sujetos</p>
+      <div class="formula">${formulaText}</div>
+      <h3>Variables usadas:</h3>
+      <ul>
+        <li>Z (nivel de confianza) = ${z}</li>
+        <li>p (proporción estimada) = ${p}</li>
+        <li>e (margen de error) = ${eMargin}</li>
+        <li>${N ? `N (población) = ${N}` : 'Población infinita o desconocida'}</li>
+      </ul>
+      <h3>Texto sugerido para incluir en la tesis:</h3>
+      <div class="suggestion">
+        Para calcular el tamaño de la muestra, se utilizó la fórmula ${formulaText.replace(/\n/g, ' ')}. Se consideró un nivel de confianza de ${ (z===1.645 ? "90%" : z===1.96 ? "95%" : "99%") }, una proporción estimada de ${p}, y un margen de error tolerado de ${eMargin}. ${N ? `Además, se ajustó la muestra considerando una población finita de ${N} sujetos.` : 'No se consideró población finita debido a su tamaño desconocido o muy grande.'} Como resultado, el tamaño mínimo de la muestra requerido es de ${n} sujetos.
+      </div>
+    `;
+  });
+</script>
+
+</body>
+  <footer style="background-color:#222; color:#eee; padding:20px; text-align:center; font-family:Arial, sans-serif; font-size:14px;">
+  <p>Autor del sitio: Luis E. Monreal</p>
+  <p>Desarrollo con: Google Charts (paquete Gantt) y dom-to-image (v2.6.0)</p>
+  <a href="https://www.paypal.com/ncp/payment/K43R5RQY5GP8G" target="_blank" 
+     style="display:inline-block; margin-top:10px; background-color:#0070BA; color:#fff; 
+            padding:10px 20px; border-radius:5px; text-decoration:none; font-weight:bold;">
+    Donar vía PayPal
+  </a>
+</footer>
+
+</html>
